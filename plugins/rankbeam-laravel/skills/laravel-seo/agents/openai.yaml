@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laravel SEO"
+  short_description: "Inspect and fix Laravel technical SEO"
+  default_prompt: "Use $laravel-seo to inspect this Laravel project's SEO and verify any requested fixes."

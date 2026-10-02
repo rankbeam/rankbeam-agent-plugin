@@ -1,0 +1,72 @@
+{
+  "file": "rankbeam-laravel-1.0.0.zip",
+  "bytes": 30040,
+  "sha256": "8c55fbd288f0ee535da3271ddbc75f6d49451090524d279738d8b5d25398d384",
+  "files": [
+    {
+      "path": ".codex-plugin/plugin.json",
+      "bytes": 2534,
+      "sha256": "a18620216bd3b0e4ce8eea326443db93b5c44add03f8fc3ff1172fb470329ad5"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1072,
+      "sha256": "7cff4d78f627e70e3e8c42459219770f029f752d0d5d628b3c1b1b573fdf48ee"
+    },
+    {
+      "path": "PRIVACY.md",
+      "bytes": 2804,
+      "sha256": "62e3304a359dfe0be2672d886cdb1bde26134cdf363e076ea43f287cb6c03e0b"
+    },
+    {
+      "path": "assets/icon.png",
+      "bytes": 11537,
+      "sha256": "ae73133c49a5683e20f33a68800a526e334f594e39ccd5c28075eb34c8f4369e"
+    },
+    {
+      "path": "plugin.json",
+      "bytes": 2684,
+      "sha256": "4d46941d75c8fcdf6b0ec9aa9682ea982f55e89da0c72688463979bf0c2b85f0"
+    },
+    {
+      "path": "skills/laravel-seo/SKILL.md",
+      "bytes": 5106,
+      "sha256": "3149e0df3a40df4244de407b7c7d43fab3725f2a01fefefec4c30b6cd75efa9b"
+    },
+    {
+      "path": "skills/laravel-seo/agents/openai.yaml",
+      "bytes": 209,
+      "sha256": "9121887fe82cbfc64599e843474c83f640fcc47f53f0e2ca822d8ee52ed9045a"
+    },
+    {
+      "path": "skills/laravel-seo/references/audit.md",
+      "bytes": 3619,
+      "sha256": "021c5bcce68f92331861f740db62f3d807a40081b22194238cd20814bd2efc5a"
+    },
+    {
+      "path": "skills/laravel-seo/references/rendering.md",
+      "bytes": 3241,
+      "sha256": "80d3cf215525757d7dac8dc565553df824d62840615ae2243e57290424fe0794"
+    },
+    {
+      "path": "skills/laravel-seo/references/setup.md",
+      "bytes": 3331,
+      "sha256": "3e7165968bfdba9ebf385048b8c2951dd720b2c9cc8b85a72fedaab4c6d5a8d0"
+    },
+    {
+      "path": "skills/laravel-seo/scripts/check-head.php",
+      "bytes": 6706,
+      "sha256": "29ee340a68131c0ff8a3f344a9e0fdbba6b1617d83f24eba45d43700eaa9461a"
+    },
+    {
+      "path": "skills/laravel-seo/scripts/inspect-project.php",
+      "bytes": 4866,
+      "sha256": "5c83373ec8a6157ee9a8dfc2467f3b00c0607d6e0f909870430ece6fa906b28c"
+    },
+    {
+      "path": "skills/laravel-seo/scripts/lib.php",
+      "bytes": 1935,
+      "sha256": "c5989751633058d6900b24be991b6ad06a7e2848be47a9a5e93356a7895367c5"
+    }
+  ]
+}

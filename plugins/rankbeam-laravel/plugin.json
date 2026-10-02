@@ -1,0 +1,54 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "rankbeam-laravel",
+  "version": "1.0.0",
+  "description": "Inspect Laravel SEO, integrate Rankbeam Core, explain resolved metadata and verify saved page HTML in a local project.",
+  "author": {
+    "name": "Valentin Goxhaj",
+    "email": "hello@rankbeam.dev",
+    "url": "https://rankbeam.dev"
+  },
+  "homepage": "https://github.com/rankbeam/rankbeam-agent-plugin",
+  "repository": "https://github.com/rankbeam/rankbeam-agent-plugin",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "seo",
+    "rankbeam",
+    "canonical",
+    "metadata",
+    "json-ld"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Rankbeam for Laravel",
+        "shortDescription": "Inspect and fix Laravel SEO",
+        "longDescription": "Inspect technical SEO in a local Laravel application, identify missing or duplicate head tags, and trace unexpected Rankbeam metadata to its source. Set up Rankbeam Core when requested and verify the affected page after a fix. Includes local PHP helpers for project inspection and saved-HTML checks. Requires access to the Laravel project and PHP 8.2 or later; HTML checks require the PHP DOM extension. No Rankbeam account is needed. This version contains skills and local helpers, with no hosted service or MCP connection. It does not measure rankings, guarantee indexing or crawl websites.",
+        "developerName": "Valentin Goxhaj",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Inspect Laravel projects",
+          "Explain SEO metadata",
+          "Check saved HTML",
+          "Integrate Rankbeam Core"
+        ],
+        "websiteURL": "https://github.com/rankbeam/rankbeam-agent-plugin",
+        "supportURL": "https://github.com/rankbeam/rankbeam-agent-plugin/blob/main/SUPPORT.md",
+        "privacyPolicyURL": "https://github.com/rankbeam/rankbeam-agent-plugin/blob/main/PRIVACY.md",
+        "termsOfServiceURL": "https://github.com/rankbeam/rankbeam-agent-plugin/blob/main/LICENSE",
+        "defaultPrompt": [
+          "Inspect this Laravel project for technical SEO problems without changing files.",
+          "Set up Rankbeam Core for an existing page and verify its rendered head.",
+          "Explain why this page has the wrong canonical URL and fix the source of the problem."
+        ],
+        "brandColor": "#2457D6",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "publication": {
+        "release_notes": "Initial release with Laravel project inspection, Core setup and diagnostics, and saved-HTML verification."
+      }
+    }
+  }
+}

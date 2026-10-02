@@ -1,0 +1,197 @@
+{
+  "type": "operator-executed workflow integration; not model activation evaluation",
+  "runtime": "8.4.25",
+  "packages": {
+    "laravel/framework": "v12.69.3",
+    "rankbeam/laravel-seo": "v3.21.1"
+  },
+  "cases": [
+    {
+      "case": "empty audit is zero coverage",
+      "status": "pass",
+      "observed": {
+        "pages": 0,
+        "passed": 0,
+        "warned": 0,
+        "failed": 0,
+        "issues": 0,
+        "by_severity": {
+          "critical": 0,
+          "warning": 0,
+          "notice": 0
+        }
+      }
+    },
+    {
+      "case": "seed one synthetic record",
+      "status": "pass",
+      "observed": {
+        "key": "1"
+      }
+    },
+    {
+      "case": "bounded Core audit",
+      "status": "pass",
+      "observed": {
+        "pages": 1,
+        "passed": 1,
+        "warned": 0,
+        "failed": 0,
+        "issues": 0,
+        "by_severity": {
+          "critical": 0,
+          "warning": 0,
+          "notice": 0
+        }
+      }
+    },
+    {
+      "case": "explicit value overrides computed title",
+      "status": "pass",
+      "observed": {
+        "final": "An explicit editorial title for the Laravel example",
+        "winner": {
+          "layer": "explicit",
+          "value": "An explicit editorial title for the Laravel example"
+        },
+        "losers": [
+          {
+            "layer": "computed",
+            "value": "A practical Laravel metadata verification example"
+          }
+        ],
+        "notes": []
+      }
+    },
+    {
+      "case": "real HTTP response",
+      "status": "pass",
+      "observed": {
+        "status": 200,
+        "content_type": "text/html"
+      }
+    },
+    {
+      "case": "duplicate head detected",
+      "status": "pass",
+      "observed": [
+        {
+          "code": "duplicate_title",
+          "severity": "error",
+          "message": "The head contains multiple title elements."
+        },
+        {
+          "code": "no_jsonld",
+          "severity": "info",
+          "message": "No JSON-LD found; whether it is needed depends on the page."
+        }
+      ]
+    },
+    {
+      "case": "fixed raw head passes",
+      "status": "pass",
+      "observed": {
+        "title": 1,
+        "description": 1,
+        "canonical": 1,
+        "jsonld": 0,
+        "jsonld_syntax_valid": 0,
+        "hreflang_languages": 0
+      }
+    },
+    {
+      "case": "correct public canonical",
+      "status": "pass",
+      "observed": {
+        "canonical": "https://plugin-fixture.test/posts/1"
+      }
+    },
+    {
+      "case": "stored editorial title preserved",
+      "status": "pass",
+      "observed": {
+        "stored_title_unchanged": true
+      }
+    },
+    {
+      "case": "local indexing guard preserved",
+      "status": "pass",
+      "observed": {
+        "final": "noindex,nofollow",
+        "winner": {
+          "layer": "config",
+          "value": "index,follow"
+        },
+        "losers": [],
+        "notes": [
+          "indexing guard forced 'noindex,nofollow' (environment 'testing' is not allowed to index)"
+        ]
+      }
+    },
+    {
+      "case": "intentional guard is separate from audit defects",
+      "status": "pass",
+      "observed": {
+        "guard": {
+          "active": true,
+          "environment": "testing",
+          "allowed_environments": [
+            "production"
+          ],
+          "directive": "noindex,nofollow"
+        },
+        "summary": {
+          "pages": 1,
+          "passed": 1,
+          "warned": 0,
+          "failed": 0,
+          "issues": 0,
+          "by_severity": {
+            "critical": 0,
+            "warning": 0,
+            "notice": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "strict audit fails on actual metadata defects",
+      "status": "pass",
+      "observed": {
+        "pages": 1,
+        "passed": 0,
+        "warned": 1,
+        "failed": 0,
+        "issues": 1,
+        "by_severity": {
+          "critical": 0,
+          "warning": 0,
+          "notice": 1
+        }
+      }
+    },
+    {
+      "case": "non-HasSEO model is a coverage gap",
+      "status": "pass",
+      "observed": {
+        "skipped": [
+          {
+            "model": "App\\Models\\User",
+            "reason": "does not use the HasSEO trait"
+          }
+        ],
+        "pages": 0
+      }
+    },
+    {
+      "case": "fixture server stopped",
+      "status": "pass",
+      "observed": {
+        "server_running": false
+      }
+    }
+  ],
+  "fixture_only": true,
+  "external_http_requests": 0,
+  "html_sha256": "af746fe73bbca9b12cb50f20a7f9782aaf99153ed820e09792bd240c6598fb68"
+}
