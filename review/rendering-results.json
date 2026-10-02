@@ -1,0 +1,366 @@
+{
+  "environment": {
+    "examples_commit": "821b1c09e9635f6c03faed452fef32778f92b589",
+    "php": "PHP 8.4.25 (cli) (built: Aug 25 2026 18:38:23) (NTS Visual C++ 2022 x64)",
+    "apps": [
+      {
+        "stack": "blade",
+        "port": 8310,
+        "packages": {
+          "laravel/framework": "v12.69.3",
+          "rankbeam/laravel-seo": "v3.21.1"
+        }
+      },
+      {
+        "stack": "inertia-vue",
+        "port": 8311,
+        "packages": {
+          "inertiajs/inertia-laravel": "v2.0.28",
+          "laravel/framework": "v12.69.3",
+          "rankbeam/laravel-seo": "v3.21.1"
+        },
+        "frontend": {
+          "@inertiajs/vue3": "2.3.26",
+          "vue": "3.5.38"
+        }
+      },
+      {
+        "stack": "inertia-react",
+        "port": 8312,
+        "packages": {
+          "inertiajs/inertia-laravel": "v2.0.28",
+          "laravel/framework": "v12.69.3",
+          "rankbeam/laravel-seo": "v3.21.1"
+        },
+        "frontend": {
+          "@inertiajs/react": "2.3.26",
+          "react": "18.3.1"
+        }
+      },
+      {
+        "stack": "inertia-svelte",
+        "port": 8313,
+        "packages": {
+          "inertiajs/inertia-laravel": "v2.0.28",
+          "laravel/framework": "v12.69.3",
+          "rankbeam/laravel-seo": "v3.21.1"
+        },
+        "frontend": {
+          "@inertiajs/svelte": "2.3.26",
+          "svelte": "5.56.3"
+        }
+      },
+      {
+        "stack": "livewire",
+        "port": 8314,
+        "packages": {
+          "laravel/framework": "v12.69.3",
+          "livewire/livewire": "v3.8.10",
+          "rankbeam/laravel-seo": "v3.21.1"
+        }
+      }
+    ]
+  },
+  "receipts": [
+    {
+      "stack": "blade",
+      "mode": "server-rendered raw response",
+      "pages": [
+        {
+          "page": "rich",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 1,
+          "checker_codes": [],
+          "sha256": "295dafe2667c34fdacc79a8def4a167004ab73197ae83d0af52cc1e34bddeaa6"
+        },
+        {
+          "page": "bare",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_description",
+            "no_jsonld"
+          ],
+          "sha256": "33b5d8cf7d0fe840d75f1ae11948fb05c1714eca051f2c6f72bb44356272bf8a"
+        },
+        {
+          "page": "noindex",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "noindex_present",
+            "no_jsonld"
+          ],
+          "sha256": "56e4e27abd741cfc3e801cc59ad3f99809eabec7c437020b0d84338552025626"
+        }
+      ]
+    },
+    {
+      "stack": "inertia-react",
+      "mode": "server-rendered raw response",
+      "pages": [
+        {
+          "page": "rich",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 1,
+          "checker_codes": [],
+          "sha256": "41dd9cab5ca9f833eee9a801115456eb35426dcb16693cdb4baee3bc91b57db9"
+        },
+        {
+          "page": "bare",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_description",
+            "no_jsonld"
+          ],
+          "sha256": "0c7e4a85bc2515c36cebf1488c2e05b631bdbcd7fd706b99f76f9b00ca1f6ae7"
+        },
+        {
+          "page": "noindex",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "noindex_present",
+            "no_jsonld"
+          ],
+          "sha256": "36873bf55fe20b10f7271daf6695ef0d309275c3080893e1930cfc4c9ff24842"
+        }
+      ]
+    },
+    {
+      "stack": "inertia-svelte",
+      "mode": "server-rendered raw response",
+      "pages": [
+        {
+          "page": "rich",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 1,
+          "checker_codes": [],
+          "sha256": "c9b6d7830cbab4faba26119e5d0293f310284e187249d463e27e528787414493"
+        },
+        {
+          "page": "bare",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_description",
+            "no_jsonld"
+          ],
+          "sha256": "ba317fe9b0dc3070733782338e52d07d411c58442ae3f2c385da8a4d4b97c0fa"
+        },
+        {
+          "page": "noindex",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "noindex_present",
+            "no_jsonld"
+          ],
+          "sha256": "053924ec3afd59933298dbd79168a5c23a8ea0c1780e29079352a85fae7d0190"
+        }
+      ]
+    },
+    {
+      "stack": "inertia-vue",
+      "mode": "csr raw metadata absence",
+      "pages": [
+        {
+          "page": "rich",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 0,
+          "canonical_count": 0,
+          "jsonld_count": 1,
+          "checker_codes": [
+            "missing_title",
+            "missing_description",
+            "missing_canonical"
+          ],
+          "sha256": "8a9a829ee66a6d996f1c624fe9de92fc82e284724008fb21866a54f0b3253b7b"
+        },
+        {
+          "page": "bare",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 0,
+          "canonical_count": 0,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_title",
+            "missing_description",
+            "missing_canonical",
+            "no_jsonld"
+          ],
+          "sha256": "901c1f1b5e801b70aa4770bfb5c99060e81b214a9ac0c4e7b1a93ed48e00bfd4"
+        },
+        {
+          "page": "noindex",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 0,
+          "canonical_count": 0,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_title",
+            "missing_description",
+            "missing_canonical",
+            "no_jsonld"
+          ],
+          "sha256": "f45a3ac66a2d9c7c41c1467a44835dce45c2a6dff3681680fb250a0e3fbdddac"
+        }
+      ]
+    },
+    {
+      "stack": "inertia-vue",
+      "mode": "server-rendered raw response",
+      "pages": [
+        {
+          "page": "rich",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 1,
+          "checker_codes": [],
+          "sha256": "c995b7ba19f257763d302f43f2b3707fcf82f9ac10fa4e3c0e63e485b52e41f3"
+        },
+        {
+          "page": "bare",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_description",
+            "no_jsonld"
+          ],
+          "sha256": "d32ee939e383733c49c55dd90a1a07257b1d5807732bff382c50e2186e9f074b"
+        },
+        {
+          "page": "noindex",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "noindex_present",
+            "no_jsonld"
+          ],
+          "sha256": "715b3fb41e000fb80d1c432fa27c2ccd98933405a0c33e5d982c6a61ebb60235"
+        }
+      ]
+    },
+    {
+      "stack": "livewire",
+      "mode": "server-rendered raw response",
+      "pages": [
+        {
+          "page": "rich",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 1,
+          "checker_codes": [],
+          "sha256": "979f5a5fea1af120bcb3e3671b9579daa309e931fac9eb16ca2427a3624a1ed7"
+        },
+        {
+          "page": "bare",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "missing_description",
+            "no_jsonld"
+          ],
+          "sha256": "da7cebb9cf241e88d0f5b4a61b9fe31df3c7c49f1952dbc6a10248b3c9670a3e"
+        },
+        {
+          "page": "noindex",
+          "http_status": 200,
+          "content_type": "text/html",
+          "title_count": 1,
+          "canonical_count": 1,
+          "jsonld_count": 0,
+          "checker_codes": [
+            "noindex_present",
+            "no_jsonld"
+          ],
+          "sha256": "2f33bee048ed2bcecf86a176351553063e525c23f1d4de7261da4ea8ce118a03"
+        }
+      ]
+    }
+  ],
+  "browser": {
+    "method": "Codex browser UI navigation with read-only DOM assertions",
+    "sequence": [
+      "rich",
+      "bare",
+      "rich",
+      "noindex",
+      "bare",
+      "rich"
+    ],
+    "inertia-vue": {
+      "checks": 64,
+      "failed": 0
+    },
+    "inertia-react": {
+      "checks": 64,
+      "failed": 0
+    },
+    "inertia-svelte": {
+      "checks": 64,
+      "failed": 0
+    },
+    "livewire": {
+      "transition_checks": 48,
+      "failed": 0,
+      "initial_rich": "inspected; not included in numeric total"
+    },
+    "inertia_console_errors_or_warnings": 0
+  },
+  "fixture_adjustments": [
+    "Vue renderer object binding and React omission of absent properties match updated public example source.",
+    "Synthetic isolated SQLite/environment, released Core 3.21.1.",
+    "Inertia SSR server bound to loopback in disposable node_modules only."
+  ],
+  "limitations": [
+    "Operator rendering checks, not fresh-model tool execution.",
+    "Browser checks cover selected metadata signals, not full conformance or every supported version.",
+    "Bare fixture deliberately lacks a description; expected finding retained.",
+    "CSR-off control exercised Vue only."
+  ]
+}

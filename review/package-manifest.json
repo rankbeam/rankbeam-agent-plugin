@@ -1,12 +1,12 @@
 {
-  "file": "rankbeam-laravel-1.0.1.zip",
-  "bytes": 30255,
-  "sha256": "2c630b336026dc12490342ded4613efa53232e622935cecce16a2a97e786056b",
+  "file": "rankbeam-laravel-1.1.0.zip",
+  "bytes": 31531,
+  "sha256": "c7d295cd7cc81c16f687f424e23597bdd965ca36342d3a52d4021cc36ff0f4fa",
   "files": [
     {
       "path": ".codex-plugin/plugin.json",
-      "bytes": 2607,
-      "sha256": "9de87e6ef18060e04fff1fdef87f8bdeec7b77cc49186182c2147afd132440de"
+      "bytes": 2701,
+      "sha256": "838a046547d13e7c29128ccf4c20b49c634570c166704f3b9c645dcd03eb440b"
     },
     {
       "path": "LICENSE",
@@ -25,13 +25,13 @@
     },
     {
       "path": "plugin.json",
-      "bytes": 2757,
-      "sha256": "11343ff773be3ee67bdf0d09f2f2f0e620fdb8ca1cd7b4c0e1f4008c03093188"
+      "bytes": 2851,
+      "sha256": "385d712f2bc906c8a930f4f22b210f2ea7a8023b225b6c1dddbddec411c25bf5"
     },
     {
       "path": "skills/laravel-seo/SKILL.md",
-      "bytes": 5106,
-      "sha256": "3149e0df3a40df4244de407b7c7d43fab3725f2a01fefefec4c30b6cd75efa9b"
+      "bytes": 5446,
+      "sha256": "f8ba405d44e44827a9cd9954a19d70f2c386efe6abbb2f0d150c928fbaba7232"
     },
     {
       "path": "skills/laravel-seo/agents/openai.yaml",
@@ -45,8 +45,8 @@
     },
     {
       "path": "skills/laravel-seo/references/rendering.md",
-      "bytes": 3241,
-      "sha256": "80d3cf215525757d7dac8dc565553df824d62840615ae2243e57290424fe0794"
+      "bytes": 4342,
+      "sha256": "d033a15d519fdac9105947024c9e308903204c10779275f6a85581747a811340"
     },
     {
       "path": "skills/laravel-seo/references/setup.md",
@@ -55,8 +55,8 @@
     },
     {
       "path": "skills/laravel-seo/scripts/check-head.php",
-      "bytes": 6843,
-      "sha256": "f4a924d214dd7ee995a746dde2b43ea1b18447d718f381a05a356666e1fa9a72"
+      "bytes": 9014,
+      "sha256": "419ab96e5d283e46d72a22fa099d5a778dc1f86a84023856d9db2dd71b7d3031"
     },
     {
       "path": "skills/laravel-seo/scripts/inspect-project.php",

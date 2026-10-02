@@ -12,6 +12,27 @@ Test a successful raw response, not only the Blade source. One valid title, desc
 
 Pass `SEO::forInertia($model)` from the controller as a page prop. It has `title`, `meta` and `link` entries. Vue and React use Inertia's `Head`; each generated meta/link must carry the provided `head-key`. Framework list `key` alone does not deduplicate head elements. Svelte uses `svelte:head` and should have one owner for those tags.
 
+For Vue, bind the provided attribute object rather than creating absent `name`, `property` or `hreflang` props. Inertia 2's head serializer can turn an explicitly bound undefined prop into the literal string `"undefined"`:
+
+```vue
+<Head :title="seo.title">
+    <meta v-for="m in seo.meta" :key="m['head-key']" v-bind="m" />
+    <link v-for="l in seo.link" :key="l['head-key']" v-bind="l" />
+</Head>
+```
+
+Use only renderer-produced attribute objects here. Check the actual DOM for `name="undefined"`, `property="undefined"` or `hreflang="undefined"` as well as duplicate tags. Filter absent attributes when adapting the recipe to a different renderer or head manager.
+
+React's Inertia head serializer needs the same omission of absent properties. Spread each renderer-produced meta object; add `hrefLang` only to actual alternates:
+
+```jsx
+<Head title={seo.title}>
+    {seo.meta.map(m => <meta key={m['head-key']} {...m} />)}
+    {seo.link.map(l => <link key={l['head-key']} head-key={l['head-key']}
+        rel={l.rel} href={l.href} {...(l.hreflang ? { hrefLang: l.hreflang } : {})} />)}
+</Head>
+```
+
 `forInertia()` intentionally omits scripts. JSON-LD comes from `SEO::toArray($model)['script']` and needs the documented root-view and navigation treatment. Read the maintained [Inertia guide](https://docs.rankbeam.dev/guide/inertia-json) and the installed version's renderer before implementing this path. Do not invent a `Head` script API or inject untrusted raw HTML. Rankbeam renderer-produced JSON is escaped for script safety; arbitrary user strings are not equivalent.
 
 Check the initial raw HTML separately from the browser DOM. Client-only insertion does not establish crawler/social-scraper visibility. If SSR/prerender is absent, state that limitation and scope the SSR work with the user; do not claim a metadata-only patch enabled SSR. After navigation rich page → bare page → rich page, check that previous schema and social fields disappear and no duplicates accumulate.

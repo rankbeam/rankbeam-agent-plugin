@@ -7,7 +7,7 @@ PLUGIN = ROOT / 'plugins/rankbeam-laravel'
 REPO = 'https://github.com/rankbeam/rankbeam-agent-plugin'
 identity = {
     'name': 'rankbeam-laravel',
-    'version': '1.0.1',
+    'version': '1.1.0',
     'description': 'Inspect Laravel SEO, integrate Rankbeam Core, explain resolved metadata and verify saved page HTML in a local project.',
     'author': {'name': 'Valentin Goxhaj', 'email': 'hello@rankbeam.dev', 'url': 'https://rankbeam.dev'},
     'homepage': REPO,
@@ -35,7 +35,7 @@ interface = {
     'composerIcon': './assets/icon.png',
     'logo': './assets/icon.png',
 }
-extra = {'publication': {'release_notes': 'Reject network-share inputs before filesystem access and detect malformed canonical/hreflang URLs. Preserve valid percent-encoded URLs. Includes regression tests for these cases.'}}
+extra = {'publication': {'release_notes': 'Add optional exact canonical and required JSON-LD checks, detect undefined/null head attributes, and correct Vue/React optional bindings. Verified against Blade, Livewire and Inertia Vue/React/Svelte fixtures, with model reasoning evaluations and explicit coverage limits.'}}
 portable = {'$schema': 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json', **identity, 'extensions': {'com.openai': {'interface': interface, **extra}}}
 compat = {**identity, 'skills': './skills/', 'interface': interface, 'extensions': {'com.openai': extra}}
 for path, data in [(PLUGIN/'plugin.json', portable), (PLUGIN/'.codex-plugin/plugin.json', compat)]:

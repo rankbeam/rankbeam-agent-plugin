@@ -38,6 +38,8 @@ php plugins/rankbeam-laravel/skills/laravel-seo/scripts/check-head.php /path/to/
 
 The inspector reads Composer metadata and candidate file names without booting Laravel. The HTML helper checks missing/duplicate titles, descriptions and canonicals, canonical URL syntax, robots conflicts, hreflang duplicates and JSON-LD syntax. It never fetches a URL or runs JavaScript. Neither helper reads `.env` or sends results to Rankbeam.
 
+For a known page contract, add `--expected-canonical https://example.com/page` and, only when schema is required, `--require-jsonld`. The helper also reports literal undefined/null metadata attributes caused by frontend bindings. [Quality evidence](review/QA.md) separates helper tests, real rendering and model reasoning evaluations.
+
 ## Limits
 
 These are technical checks on the supplied project and HTML. They do not measure rankings, guarantee indexing or AI citations, validate rich-result eligibility or replace a full crawl. Intentional staging `noindex` is preserved. Inertia SSR and Livewire navigation need separate rendering checks; the static HTML helper cannot prove them.

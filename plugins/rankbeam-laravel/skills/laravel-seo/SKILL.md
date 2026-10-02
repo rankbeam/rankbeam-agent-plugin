@@ -39,6 +39,8 @@ Save the raw HTML returned by an authorized local route to a scratch `.html` fil
 php "<skill-directory>/scripts/check-head.php" "<saved-response.html>"
 ```
 
+When the intended canonical is established, add `--expected-canonical "https://example.com/intended-path"` for an exact comparison. Add `--require-jsonld` only for a page that is supposed to emit schema. These options turn an absent required schema or a different canonical into a finding; do not invent requirements to make a check pass.
+
 The checker accepts local HTML files only. It never fetches URLs or executes scripts. Exit `0` means its narrow checks found no errors or warnings; `1` means findings; `2` means invalid input or a runtime requirement is missing. `noindex` is informational unless conflicting directives exist. No JSON-LD is informational: many pages do not need it. It checks JSON syntax/object shape, not Schema.org validity or rich-result eligibility.
 
 Inspect HTTP status, content type and headers separately; an error page with good tags is not a passing route. Compare the canonical with the intended public URL. For Inertia or Livewire navigation, test the first response and subsequent navigation independently. A correct browser DOM does not prove that the raw response contains metadata.

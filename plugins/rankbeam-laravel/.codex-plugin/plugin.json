@@ -1,6 +1,6 @@
 {
   "name": "rankbeam-laravel",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Inspect Laravel SEO, integrate Rankbeam Core, explain resolved metadata and verify saved page HTML in a local project.",
   "author": {
     "name": "Valentin Goxhaj",
@@ -47,7 +47,7 @@
   "extensions": {
     "com.openai": {
       "publication": {
-        "release_notes": "Reject network-share inputs before filesystem access and detect malformed canonical/hreflang URLs. Preserve valid percent-encoded URLs. Includes regression tests for these cases."
+        "release_notes": "Add optional exact canonical and required JSON-LD checks, detect undefined/null head attributes, and correct Vue/React optional bindings. Verified against Blade, Livewire and Inertia Vue/React/Svelte fixtures, with model reasoning evaluations and explicit coverage limits."
       }
     }
   }

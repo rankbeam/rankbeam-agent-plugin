@@ -4,17 +4,40 @@ declare(strict_types=1);
 
 require __DIR__.'/lib.php';
 
-if ($argc !== 2 || in_array($argv[1], ['--help', '-h'], true)) {
-    rb_output(['usage' => 'php check-head.php <saved-response.html>', 'requires' => 'PHP 8.2+ and ext-dom', 'exit_codes' => ['0' => 'No errors or warnings in checked signals', '1' => 'Findings', '2' => 'Input/runtime error']], $argc === 2 ? 0 : 2);
+$path = null;
+$expectedCanonical = null;
+$requireJsonld = false;
+$options = true;
+for ($i = 1; $i < $argc; ++$i) {
+    $argument = $argv[$i];
+    if ($options && in_array($argument, ['--help', '-h'], true)) {
+        rb_output(['usage' => 'php check-head.php <saved-response.html> [--expected-canonical <absolute-url>] [--require-jsonld]', 'requires' => 'PHP 8.2+ and ext-dom', 'exit_codes' => ['0' => 'No errors or warnings in checked signals', '1' => 'Findings', '2' => 'Input/runtime error']]);
+    } elseif ($options && $argument === '--') {
+        $options = false;
+    } elseif ($options && $argument === '--expected-canonical') {
+        if ($expectedCanonical !== null || !isset($argv[$i + 1]) || str_starts_with($argv[$i + 1], '--')) {
+            rb_error('invalid_arguments', 'Supply --expected-canonical once with an absolute HTTP(S) URL.');
+        }
+        $expectedCanonical = $argv[++$i];
+    } elseif ($options && $argument === '--require-jsonld') {
+        $requireJsonld = true;
+    } elseif (($options && str_starts_with($argument, '-')) || $path !== null) {
+        rb_error('invalid_arguments', 'Supply one HTML path and supported options; see --help.');
+    } else {
+        $path = $argument;
+    }
 }
-rb_local_path($argv[1]);
-if (!in_array(strtolower(pathinfo($argv[1], PATHINFO_EXTENSION)), ['html', 'htm'], true)) {
+if ($path === null) {
+    rb_error('invalid_arguments', 'Supply one saved HTML path; see --help.');
+}
+rb_local_path($path);
+if (!in_array(strtolower(pathinfo($path, PATHINFO_EXTENSION)), ['html', 'htm'], true)) {
     rb_error('unsupported_extension', 'Save the response as an .html or .htm file.');
 }
 if (!class_exists(DOMDocument::class)) {
     rb_error('missing_dom', 'Enable the PHP DOM extension to inspect saved HTML.');
 }
-$html = rb_read($argv[1], 2097152);
+$html = rb_read($path, 2097152);
 if (trim($html) === '') {
     rb_error('empty_html', 'The HTML input is empty.');
 }
@@ -36,6 +59,14 @@ $query = function (string $expression) use ($xpath): array {
     return iterator_to_array($xpath->query($expression));
 };
 $asciiLower = "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'";
+foreach ($query('//head/meta | //head/link') as $node) {
+    foreach (['name', 'property', 'rel', 'hreflang', 'href'] as $attribute) {
+        if ($node->hasAttribute($attribute) && in_array(strtolower(trim($node->getAttribute($attribute))), ['undefined', 'null'], true)) {
+            $add('invalid_serialized_attribute', 'warning', 'A head metadata attribute contains a literal undefined/null value; inspect optional frontend bindings.');
+            break 2;
+        }
+    }
+}
 $titles = $query('//head/title');
 $descriptions = $query("//head/meta[translate(@name, {$asciiLower})='description']");
 $canonicals = $query("//head/link[contains(concat(' ', normalize-space(translate(@rel, {$asciiLower})), ' '), ' canonical ')]");
@@ -60,6 +91,14 @@ $absolute = static function (string $url): bool {
 foreach ($values['canonical'] as $url) {
     if ($url !== '' && !$absolute($url)) {
         $add('invalid_canonical', 'error', 'A canonical must be an absolute HTTP(S) URL without credentials, whitespace, unsafe raw characters or malformed percent escapes.');
+    }
+}
+if ($expectedCanonical !== null) {
+    if (!$absolute($expectedCanonical)) {
+        rb_error('invalid_expected_canonical', 'The expected canonical must be a valid absolute HTTP(S) URL.');
+    }
+    if (count($values['canonical']) === 1 && $values['canonical'][0] !== $expectedCanonical) {
+        $add('canonical_mismatch', 'error', 'The canonical does not exactly match the supplied expected URL.');
     }
 }
 $robots = [];
@@ -104,7 +143,11 @@ foreach ($jsonld as $node) {
     }
 }
 if ($jsonld === []) {
-    $add('no_jsonld', 'info', 'No JSON-LD found; whether it is needed depends on the page.');
+    if ($requireJsonld) {
+        $add('missing_required_jsonld', 'error', 'No JSON-LD found although this check explicitly requires it.');
+    } else {
+        $add('no_jsonld', 'info', 'No JSON-LD found; whether it is needed depends on the page.');
+    }
 }
 $alternates = [];
 foreach ($query("//head/link[@hreflang and contains(concat(' ', normalize-space(translate(@rel, {$asciiLower})), ' '), ' alternate ')]") as $node) {
@@ -123,6 +166,7 @@ $blocking = array_filter($findings, static fn (array $finding): bool => $finding
 rb_output([
     'schema_version' => 1,
     'status' => $blocking === [] ? 'pass' : 'findings',
+    'expectations' => ['canonical_supplied' => $expectedCanonical !== null, 'jsonld_required' => $requireJsonld],
     'counts' => ['title' => count($titles), 'description' => count($descriptions), 'canonical' => count($canonicals), 'jsonld' => count($jsonld), 'jsonld_syntax_valid' => $jsonldValid, 'hreflang_languages' => count($alternates)],
     'findings' => $findings,
     'limitations' => ['Saved HTML only; HTTP status, headers and redirects are not checked.', 'No JavaScript execution or browser navigation.', 'Canonical destination, public origin and reachability are not verified.', 'JSON-LD syntax/shape only, not Schema.org or rich-result validation.', 'No social preview, ranking, indexing or AI-citation guarantee.'],

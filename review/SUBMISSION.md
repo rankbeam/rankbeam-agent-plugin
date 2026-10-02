@@ -1,10 +1,10 @@
-# Submission handoff: Rankbeam for Laravel 1.0.1
+# Submission handoff: Rankbeam for Laravel 1.1.0
 
 Prepared 2 October 2026. The package is ready for an initial upload and portal validation. It has not been submitted to or approved by OpenAI. Developer identity verification, account eligibility, automated portal findings and policy attestations remain pending.
 
 ## Package and purpose
 
-Download `rankbeam-laravel-1.0.1.zip` and its SHA-256 inventory from the [1.0.1 release](https://github.com/rankbeam/rankbeam-agent-plugin/releases/tag/v1.0.1). Upload the plugin ZIP, not GitHub's source-code ZIP. It contains one top-level plugin directory, portable and Codex compatibility manifests, one skill, three workflow references, three PHP helper files, the existing Rankbeam icon, an MIT license and a data-handling notice.
+Download `rankbeam-laravel-1.1.0.zip` and its SHA-256 inventory from the [1.1.0 release](https://github.com/rankbeam/rankbeam-agent-plugin/releases/tag/v1.1.0). Upload the plugin ZIP, not GitHub's source-code ZIP. It contains one top-level plugin directory, portable and Codex compatibility manifests, one skill, three workflow references, three PHP helper files, the existing Rankbeam icon, an MIT license and a data-handling notice.
 
 The plugin helps users inspect a local Laravel application, diagnose metadata resolution, set up Rankbeam Core when requested, and verify a scoped repair against served HTML. Initial inspection works without Core. There is no Rankbeam account, paid dependency, MCP server, background hook, telemetry or hosted service. PHP 8.2+ and `ext-dom` are needed for the helpers; the host must provide local file/shell access. Application commands require an appropriate local/test environment.
 
@@ -15,7 +15,7 @@ Publisher: Valentin Goxhaj, Rankbeam. Contact: hello@rankbeam.dev. The verified 
 - [Support](https://github.com/rankbeam/rankbeam-agent-plugin/blob/main/SUPPORT.md)
 - [MIT license](https://github.com/rankbeam/rankbeam-agent-plugin/blob/main/LICENSE)
 - [Recorded QA](QA.md)
-- [Prompts for agent evaluation](EVALUATION.md)
+- [Agent evaluation evidence and prompts](EVALUATION.md)
 
 ## Reviewer setup
 
@@ -38,6 +38,10 @@ The integration harness refuses an unmarked/configured application or an existin
 
 For an interactive review, use the repository installation commands in README.md, start a new Codex session with the disposable application selected, and try EVALUATION.md. The automatic integration harness exercises helper/package behavior; it does not replace model-level prompt evaluation.
 
+For a quick credential-free demonstration, run `python tools/demo.py`. It checks an intentionally duplicated title/relative canonical, then the minimal corrected HTML. The second result passes while retaining the informational staging noindex. This demonstration is deterministic helper execution, not a recording of agent activation.
+
+The rendering lab can be reproduced from a checkout of [rankbeam-examples](https://github.com/rankbeam/rankbeam-examples): run `python tools/prepare_rendering.py --examples /path/to/rankbeam-examples --output work/rendering`, then `python tools/serve_rendering.py --lab work/rendering --stack inertia-vue --ssr` in an interactive terminal. Run `python tools/capture_rendering.py --lab work/rendering --stack inertia-vue` separately. The five stack names and ports are recorded in `lab.json`. Type `stop` to terminate the lab server; run only one SSR stack at a time. The preparation downloads dependencies and builds frontend assets; it uses a new marked fixture with synthetic data. Browser navigation checks are separate from raw capture.
+
 ## Portal steps
 
 1. Open [Plugins](https://platform.openai.com/plugins) in the intended organization/project. Confirm publishing permissions and complete developer identity verification if required.
@@ -45,10 +49,10 @@ For an interactive review, use the repository installation commands in README.md
 3. Confirm that the publisher and public URLs are accurate. This package has no MCP connection or reviewer login to configure.
 4. Submit the validated draft after completing the portal's attestations. Review acceptance and publication are separate steps.
 
-Current [submission documentation](https://developers.openai.com/plugins/deploy/submission) describes credentials, five positive/three negative cases and a video for MCP integrations. This skills-only package includes useful review scenarios without presenting them as executed model tests. Any additional portal requirement still applies. The [plugin guidelines](https://developers.openai.com/plugins/plugin-guidelines) allow additional eligibility requirements for skills-only publication; local validation does not establish eligibility or approval.
+Current [submission documentation](https://developers.openai.com/plugins/deploy/submission) describes credentials, five positive/three negative cases and a video for MCP integrations. This skills-only package includes review scenarios, seven executed source-supplied reasoning cases and a reproducible CLI demonstration. Native end-to-end activation remains unverified because of the recorded host-policy block. Any additional portal requirement still applies. The [plugin guidelines](https://developers.openai.com/plugins/plugin-guidelines) allow additional eligibility requirements for skills-only publication; local validation does not establish eligibility or approval.
 
 The initial scope is intentionally skills-only. Current submission documentation says an MCP server cannot be added to an existing skills-only plugin. A future Pro MCP integration therefore needs a separate distribution decision.
 
 ## Release notes
 
-Version 1.0.1 rejects network-share inputs before filesystem access and identifies malformed canonical/hreflang URLs, including backslashes and incomplete percent escapes. Valid encoded paths and queries remain supported. Version 1.0.0 introduced local Laravel inspection, saved-HTML checks and audit/setup/rendering workflows. Neither version claims ranking, indexing, citation or discovery-volume outcomes.
+Version 1.1.0 adds optional exact canonical and required JSON-LD checks, catches undefined/null structural head attributes, and corrects Vue/React optional bindings. Five-stack raw rendering, selected browser navigation assertions and source-supplied model reasoning checks are documented with their limits. Version 1.0.1 hardened local paths and URL syntax. No version claims ranking, indexing, citation or discovery-volume outcomes.
