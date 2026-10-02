@@ -1,10 +1,10 @@
-# Submission handoff: Rankbeam for Laravel 1.0.0
+# Submission handoff: Rankbeam for Laravel 1.0.1
 
 Prepared 2 October 2026. The package is ready for an initial upload and portal validation. It has not been submitted to or approved by OpenAI. Developer identity verification, account eligibility, automated portal findings and policy attestations remain pending.
 
 ## Package and purpose
 
-Download `rankbeam-laravel-1.0.0.zip` and its SHA-256 inventory from the [1.0.0 release](https://github.com/rankbeam/rankbeam-agent-plugin/releases/tag/v1.0.0). Upload the plugin ZIP, not GitHub's source-code ZIP. It contains one top-level plugin directory, portable and Codex compatibility manifests, one skill, three workflow references, three PHP helper files, the existing Rankbeam icon, an MIT license and a data-handling notice.
+Download `rankbeam-laravel-1.0.1.zip` and its SHA-256 inventory from the [1.0.1 release](https://github.com/rankbeam/rankbeam-agent-plugin/releases/tag/v1.0.1). Upload the plugin ZIP, not GitHub's source-code ZIP. It contains one top-level plugin directory, portable and Codex compatibility manifests, one skill, three workflow references, three PHP helper files, the existing Rankbeam icon, an MIT license and a data-handling notice.
 
 The plugin helps users inspect a local Laravel application, diagnose metadata resolution, set up Rankbeam Core when requested, and verify a scoped repair against served HTML. Initial inspection works without Core. There is no Rankbeam account, paid dependency, MCP server, background hook, telemetry or hosted service. PHP 8.2+ and `ext-dom` are needed for the helpers; the host must provide local file/shell access. Application commands require an appropriate local/test environment.
 
@@ -51,4 +51,4 @@ The initial scope is intentionally skills-only. Current submission documentation
 
 ## Release notes
 
-Initial release: local Laravel dependency/source-path inspection; saved-HTML checks; audit, Core setup and rendering workflows; explicit coverage reporting; preservation of staging protection and stored editorial metadata. No ranking, indexing, citation or discovery-volume claim.
+Version 1.0.1 rejects network-share inputs before filesystem access and identifies malformed canonical/hreflang URLs, including backslashes and incomplete percent escapes. Valid encoded paths and queries remain supported. Version 1.0.0 introduced local Laravel inspection, saved-HTML checks and audit/setup/rendering workflows. Neither version claims ranking, indexing, citation or discovery-volume outcomes.

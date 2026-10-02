@@ -115,6 +115,21 @@ class Helpers(unittest.TestCase):
     def test_php_wrapper_rejected(self):
         self.assertEqual(self.run_php('check-head.php','php://filter/resource=page.html',2)['error']['code'],'invalid_path')
 
+    def test_network_share_paths_rejected(self):
+        for path in ['//invalid.example/share/page.html', r'\\invalid.example\share\page.html', r'\\?\UNC\invalid.example\share\page.html']:
+            with self.subTest(path=path):
+                self.assertEqual(self.run_php('check-head.php',path,2)['error']['code'],'invalid_path')
+                self.assertEqual(self.run_php('inspect-project.php',path,2)['error']['code'],'invalid_path')
+
+    def test_canonical_browser_repair_characters_rejected(self):
+        for url in [r'https://example.test\other/page', 'https://example.test/%ZZ', 'https://example.test/%2', 'https://example.test/{page}']:
+            with self.subTest(url=url):
+                result=self.html(self.healthy().replace('https://example.test/page',url),expected=1)
+                self.assertIn('invalid_canonical',self.codes(result))
+
+    def test_encoded_canonical_path_preserved(self):
+        self.assertEqual(self.html(self.healthy().replace('/page','/a%20page?q=%E2%9C%93'))['status'],'pass')
+
     def test_empty_html(self):
         path=self.root/'empty.html';path.write_text('')
         self.assertEqual(self.run_php('check-head.php',path,2)['error']['code'],'empty_html')

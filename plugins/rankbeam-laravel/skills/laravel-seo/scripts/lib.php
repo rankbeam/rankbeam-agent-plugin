@@ -16,8 +16,8 @@ function rb_error(string $code, string $message): never
 
 function rb_local_path(string $path): void
 {
-    if ($path === '' || str_contains($path, "\0") || preg_match('~^[a-z][a-z0-9+.-]*://~i', $path)) {
-        rb_error('invalid_path', 'Supply a local filesystem path, not a URL or PHP stream.');
+    if ($path === '' || str_contains($path, "\0") || str_starts_with(str_replace('\\', '/', $path), '//') || preg_match('~^[a-z][a-z0-9+.-]*://~i', $path)) {
+        rb_error('invalid_path', 'Supply a local filesystem path, not a network share, URL or PHP stream.');
     }
 }
 

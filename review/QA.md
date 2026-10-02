@@ -2,6 +2,10 @@
 
 Executed 2 October 2026 by Codex in the publisher's development environment. These are local automated and operator-executed checks, not independent user testing or OpenAI review.
 
+Version 1.0.1: all 44 helper/package tests pass on WSL/PHP 8.5.4; Windows/PHP 8.2.33 passes 42 with the same two symlink privilege skips. Added regression cases first reproduced accepted malformed URLs and network-share paths reaching filesystem inspection. Both are now rejected; valid encoded URLs still pass. Saved successful Laravel 12/13 responses were checked again with 1.0.1. Native installation/discovery, final installed/archive/source equality and official manifest validation were repeated. The original full application integration baseline below remains version 1.0.0; those 28 checks were not rerun for this helper-only patch.
+
+## Version 1.0.0 baseline
+
 | Check | Environment | Observed result |
 | --- | --- | --- |
 | Helpers and packaging | Windows, PHP 8.2.33 | 41 tests: 39 passed, 2 symlink cases skipped because Windows required extra privileges |

@@ -21,7 +21,7 @@ class Packaging(unittest.TestCase):
             with zipfile.ZipFile(root/'a'/first['file']) as archive:
                 self.assertEqual(len(archive.namelist()),len(builder.FILES))
                 archive.extractall(root/'extracted')
-            self.assertEqual(builder.validate(root/'extracted/rankbeam-laravel')['version'],'1.0.0')
+            self.assertEqual(builder.validate(root/'extracted/rankbeam-laravel')['version'],builder.validate()['version'])
 
     def test_unexpected_file_rejected(self):
         with tempfile.TemporaryDirectory(prefix='rankbeam-package-') as tmp:

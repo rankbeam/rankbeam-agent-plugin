@@ -51,11 +51,15 @@ foreach (['title' => [$titles, null], 'description' => [$descriptions, 'content'
 }
 $absolute = static function (string $url): bool {
     $parts = parse_url($url);
-    return is_array($parts) && in_array(strtolower($parts['scheme'] ?? ''), ['http', 'https'], true) && !empty($parts['host']) && !isset($parts['user']) && !isset($parts['pass']) && !preg_match('/[\x00-\x20\x7f]/', $url);
+    return is_array($parts)
+        && in_array(strtolower($parts['scheme'] ?? ''), ['http', 'https'], true)
+        && !empty($parts['host']) && !isset($parts['user']) && !isset($parts['pass'])
+        && !str_contains($url, '\\')
+        && !preg_match('/[\x00-\x20\x7f<>"`{}|^]|%(?![0-9a-f]{2})/i', $url);
 };
 foreach ($values['canonical'] as $url) {
     if ($url !== '' && !$absolute($url)) {
-        $add('invalid_canonical', 'error', 'A canonical must be an absolute HTTP(S) URL without credentials or whitespace.');
+        $add('invalid_canonical', 'error', 'A canonical must be an absolute HTTP(S) URL without credentials, whitespace, unsafe raw characters or malformed percent escapes.');
     }
 }
 $robots = [];
