@@ -16,6 +16,14 @@ The native installed-plugin execution attempt was **blocked by the host's shell 
 
 The Laravel 12/13 full application integration baseline below remains version 1.0.0. The new rendering fixtures and expanded helper suite are current; do not count the old 28 workflow checks as rerun for 1.1.0.
 
+### Final release and upstream follow-through
+
+The public v1.1.0 checkout rebuilds the exact 31,531-byte ZIP, SHA-256 `c7d295cd7cc81c16f687f424e23597bdd965ca36342d3a52d4021cc36ff0f4fa`; downloading the published release reproduces that hash. Saved Laravel 12/13 successful HTML also passes the final helper with an explicit canonical expectation.
+
+[Examples PR 3](https://github.com/rankbeam/rankbeam-examples/pull/3) ships the Vue/React correction and shared attribute regression assertion. [PR 4](https://github.com/rankbeam/rankbeam-examples/pull/4) enables previously skipped CSR controls for all three Inertia stacks and corrects the control's JSON-LD expectation: root-view schema remains even when client metadata is absent. The final [public browser matrix](https://github.com/rankbeam/rankbeam-examples/actions/runs/37070171270) passes **35 tests, no skips**: Blade 6, Livewire 5, each Inertia stack 8. The independent fixture oracle also passes locally. This suite is additional upstream evidence, separate from the 240 local selected assertions and the released-Core fixture matrix.
+
+[Core docs PR 128](https://github.com/rankbeam/laravel-seo/pull/128) applies the same code correction to all 15 guide editions. Local docs build and localization checks pass (602 localized pages, 3,948 identical code blocks, 645 sitemap URLs); the production deployment check succeeds. The direct automated HTTP content verification received a 403, so it is not claimed as a successful live-content read. All owned local rendering servers were stopped.
+
 ## Version 1.0.1 baseline
 
 All 44 helper/package tests passed on Linux; Windows/PHP 8.2 passed 42 with the same two skips. Network-share inputs and malformed canonical/hreflang URL regressions were fixed. Saved Laravel 12/13 HTML, native installation/discovery, archive/source/install equality and official manifest validation were repeated.
